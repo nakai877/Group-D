@@ -44,7 +44,13 @@ class CreatePost(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         """投稿ユーザーをリクエストユーザーと紐付け"""
         form.instance.user = self.request.user
+
         return super().form_valid(form)
+
+    def resize_image(image, size):
+        img = Image.open(image)
+        img.thumbnail(size)
+        img.save(image.path)
 
 
 class DetailPost(LoginRequiredMixin, DetailView):

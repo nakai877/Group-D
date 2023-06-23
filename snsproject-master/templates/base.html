@@ -2,7 +2,7 @@
 
 <!doctype html>
 <html lang="ja">
-  <head>
+<head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,27 +12,26 @@
     {% endblock customcss %}
 
     <title>SNSアプリサンプル</title>
-  </head>
-  <body>
-  
-    <nav>
-        <div>
-          <a href="{% url 'home' %}">Home</a>
-          <div>
-            <div>
-              <a href="{% url 'follow-list' %}">フォローユーザーの投稿</a>
-              <a href="{% url 'mypost' %}">自分の投稿</a>
-              <a href="/accounts/logout/">ログアウト</a>
-              <a href="{% url 'create' %}" role="button">投稿</a>
-            </div>
-          </div>
-          <div>
-            {{request.user.username}}さん
-          </div>
-        </div>
-      </nav>
+</head>
+<body>
 
-      {% block content %}
-      {% endblock content %}
-  </body>
+<nav>
+    <div>
+        <div class="button1">
+            <a href="{% url 'home' %}">Home</a>
+                <a href="{% url 'follow-list' %}">フォローユーザーの投稿</a>
+                <a href="{% url 'mypost' %}">自分の投稿</a>
+                <a href="{% url 'create' %}" role="button">投稿</a>
+                <div class="button2">
+                    <a href="/accounts/logout/">ログアウト</a>
+                </div>
+            <div>
+                {{request.user.username}}さん
+            </div>
+        </div>
+</nav>
+
+{% block content %}
+{% endblock content %}
+</body>
 </html>
