@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block customcss %}
-    <link rel="stylesheet" href="{% static 'style.css' %}">
+<link rel="stylesheet" href="{% static 'style.css' %}">
 {% endblock customcss %}
 
 {% block content %}
@@ -11,6 +11,12 @@
         <p>タイトル：{{object.title}}</p>
         <p>投稿者：{{object.user}}</p>
         <p>コメント：{{object.content}}</p>
+        {% if object.image %}
+        <img src="{{ object.image.url }}" alt="投稿画像">
+        {% else %}
+        <p></p>
+        {% endif %}
+
 
         {% if request.user in object.like.all %}
         <a href="{% url 'like-detail' object.pk %}"></a>{{object.like.count}}

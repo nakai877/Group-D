@@ -6,6 +6,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
 
 from .models import Post, Connection
+from .forms import PostForm
 
 
 class Home(LoginRequiredMixin, ListView):
@@ -37,7 +38,7 @@ class CreatePost(LoginRequiredMixin, CreateView):
     """投稿フォーム"""
     model = Post
     template_name = 'create.html'
-    fields = ['title', 'content']
+    form_class = PostForm
     success_url = reverse_lazy('mypost')
 
     def form_valid(self, form):
