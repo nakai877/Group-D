@@ -39,6 +39,18 @@ class MyPost(LoginRequiredMixin, ListView):
     def get_queryset(self):
         return Post.objects.filter(user=self.request.user)
 
+class MyLikes(LoginRequiredMixin, ListView):
+    """自分がいいねした投稿のみ表示"""
+    model = Post
+    template_name = 'list.html'
+
+    def get_queryset(self):
+        return Post.objects.filter(like=self.request.user).exclude(user=self.request.user)
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['connection'] = Connection.objects.get_or_create(user=self.request.user)
+        return context
 
 class CreatePost(LoginRequiredMixin, CreateView):
     """投稿フォーム"""
