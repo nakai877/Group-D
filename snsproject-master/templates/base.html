@@ -19,12 +19,13 @@
     <div>
         <div class="button1">
             <a href="{% url 'home' %}">Home</a>
-                <a href="{% url 'follow-list' %}">フォローユーザーの投稿</a>
-                <a href="{% url 'mypost' %}">自分の投稿</a>
-                <a href="{% url 'create' %}" role="button">投稿</a>
-                <div class="button2">
-                    <a href="/accounts/logout/">ログアウト</a>
-                </div>
+            <a href="{% url 'follow-list' %}">フォローユーザーの投稿</a>
+            <a href="{% url 'mypost' %}">自分の投稿</a>
+            <a href="{% url 'create' %}" role="button">投稿</a>
+
+            <div class="button2">
+                <a href="/accounts/logout/">ログアウト</a>
+            </div>
             <div>
                 {{request.user.username}}さん
             </div>

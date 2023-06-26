@@ -4,9 +4,11 @@ from django.views.generic import ListView, CreateView, DetailView, UpdateView, D
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
+from django.db.models import Q
 
 from .models import Post, Connection
-from .forms import PostForm
+from .forms import PostForm, SearchForm
+
 
 
 class Home(LoginRequiredMixin, ListView):
@@ -15,15 +17,19 @@ class Home(LoginRequiredMixin, ListView):
     template_name = 'list.html'
 
     def get_queryset(self):
-        """リクエストユーザーのみ除外"""
-        return Post.objects.exclude(user=self.request.user)
-    
+        keyword = self.request.GET.get('keyword')
+        queryset = super().get_queryset()
+        if keyword:
+            queryset = queryset.filter(Q(title__icontains=keyword) | Q(content__icontains=keyword))
+        return queryset.exclude(user=self.request.user)
+
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
-        #get_or_createにしないとサインアップ時オブジェクトがないためエラーになる
+        context['search_form'] = SearchForm(self.request.GET)
         context['connection'] = Connection.objects.get_or_create(user=self.request.user)
+        # Home以外のページでは検索フォームを非表示にする
+        context['show_search_form'] = self.request.resolver_match.url_name == 'home'
         return context
-    
 
 class MyPost(LoginRequiredMixin, ListView):
     """自分の投稿のみ表示"""
