@@ -1,0 +1,52 @@
+.background {
+  background-color: rgb(200, 255, 255);
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.form {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+}
+
+.form h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form p {
+  margin-bottom: 20px;
+}
+
+.form .socialaccount_ballot {
+  margin-bottom: 20px;
+}
+
+.form .socialaccount_providers {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.form .login-or {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.form .button.secondaryAction {
+  margin-right: 10px;
+}
+
+.form .primaryAction {
+  display: block;
+  margin-top: 10px;
+}
+

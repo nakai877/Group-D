@@ -8,7 +8,7 @@
 {% block content %}
 
 {% if show_search_form %}
-<div>
+<div align="center">
     <form method="GET" action="{% url 'home' %}">
         {% csrf_token %}
         {{ search_form.as_p }}
@@ -21,7 +21,7 @@
 <div>
     {% for item in object_list %}
     <hr>
-    <div>
+    <div align="center">
         <p>タイトル：<a href="{% url 'detail' item.pk %}">{{ item.title }}</a></p>
         <p>投稿者：{{ item.user.username }}</p>
 
