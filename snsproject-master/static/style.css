@@ -1,6 +1,6 @@
 p{
     front-size:22px;
-    color:#CF2E92;
+    color:#000000;
 
  }
  .detail{
@@ -50,17 +50,56 @@ p{
 
  .button2 a {
     position:absolute;
-    right:60px;
+    right:110px;
     top:15px;
  }
 
 .button1 a {
     display: inline-block;
     margin: 0 10px;
+    left:120px;
+    top:10px;
+    font-size:20px;
+}
+.username {
+    position:absolute;
+    left:150px;
+    top:90px;
+    font-size:24px;
+    background-color: rgba(255,255,0,0.5);
+}
+
+.list222 {
+    top:150px;
+    font-size:22px;
+    margin-top: 95px;
+    padding-bottom: 30px;
+    border-bottom: 5px solid #CCC;
+    background-color: #CCC;
+    background-size: 2px;
 }
 
 body {
-  background-image: url("images/bg.png");
+  background-image: url('images/bg2.png'), url('images/sky_07_b.jpg');
   background-size: cover;
 }
 
+
+
+
+.list1{
+     top:150px;
+    font-size:22px;
+    margin-top: 95px;
+    padding-bottom: 30px;
+    padding: 0.5em 1em;
+    margin: 2em 15em;
+    color: #474747;
+    background: whitesmoke;/*背景色*/
+    border-left: double 7px #4ec4d3;/*左線*/
+    border-right: double 7px #4ec4d3;/*右線*/
+}
+.list1 p {
+    margin: 0;
+    padding: 0;
+}

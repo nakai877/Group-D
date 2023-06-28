@@ -20,8 +20,7 @@
 
 <div>
     {% for item in object_list %}
-    <hr>
-    <div align="center">
+    <div align="center" class="list1">
         <p>タイトル：<a href="{% url 'detail' item.pk %}">{{ item.title }}</a></p>
         <p>投稿者：{{ item.user.username }}</p>
 
