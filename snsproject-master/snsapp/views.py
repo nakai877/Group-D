@@ -144,6 +144,35 @@ class LikeDetail(LikeBase):
         return redirect('detail', pk)
 ###############################################################
 
+###############################################################
+#よくないね処理
+class DisLikeBase(LoginRequiredMixin, View):
+    """いいねのベース。リダイレクト先を以降で継承先で設定"""
+    def get(self, request, *args, **kwargs):
+        pk = self.kwargs['pk']
+        related_post = Post.objects.get(pk=pk)
+
+        if self.request.user in related_post.dislike.all():
+            obj = related_post.dislike.remove(self.request.user)
+        else:
+            obj = related_post.dislike.add(self.request.user)
+        return obj
+
+
+class DisLikeHome(DisLikeBase):
+    """HOMEページでいいねした場合"""
+    def get(self, request, *args, **kwargs):
+        super().get(request, *args, **kwargs)
+        return redirect('home')
+
+
+class DisLikeDetail(DisLikeBase):
+    """詳細ページでいいねした場合"""
+    def get(self, request, *args, **kwargs):
+        super().get(request, *args, **kwargs)
+        pk = self.kwargs['pk']
+        return redirect('detail', pk)
+###############################################################
 
 ###############################################################
 #フォロー処理

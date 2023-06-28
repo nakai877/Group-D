@@ -7,6 +7,7 @@ class Post(models.Model):
     content = models.TextField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     like = models.ManyToManyField(User, related_name='related_post', blank=True)
+    dislike = models.ManyToManyField(User, related_name='related_post2', blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     image = models.ImageField(upload_to='post_images/', blank=True, null=True)
 

@@ -26,15 +26,15 @@
         <p>投稿者：{{ item.user.username }}</p>
 
         {% if request.user in item.like.all %}
-        <a href="{% url 'like-home' item.pk %}">❤</a>{{ item.like.count }}
+        <a href="{% url 'like-home' item.pk %}">👍</a>{{ item.like.count }}
         {% else %}
-        <a href="{% url 'like-home' item.pk %}">❤</a>{{ item.like.count }}
+        <a href="{% url 'like-home' item.pk %}">👍</a>{{ item.like.count }}
         {% endif %}
 
-        {% if request.user in item.like.all %}
-        <a href="{% url 'like-home' item.pk %}">君、きしょいね！</a>{{ item.like.count }}
+        {% if request.user in item.dislike.all %}
+        <a href="{% url 'dislike-home' item.pk %}">👎</a>{{ item.dislike.count }}
         {% else %}
-        <a href="{% url 'like-home' item.pk %}">君、きしょいね！</a>{{ item.like.count }}
+        <a href="{% url 'dislike-home' item.pk %}">👎</a>{{ item.dislike.count }}
         {% endif %}
 
         {% if item.user in connection.0.following.all %}
