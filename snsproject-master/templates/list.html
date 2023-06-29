@@ -36,11 +36,14 @@
         <a href="{% url 'dislike-home' item.pk %}">👎</a>{{ item.dislike.count }}
         {% endif %}
 
+        {% if item.user != request.user %}
         {% if item.user in connection.0.following.all %}
         <a href="{% url 'follow-home' item.pk %}">フォロー解除</a>
         {% else %}
         <a href="{% url 'follow-home' item.pk %}">フォロー</a>
         {% endif %}
+        {% endif %}
+
     </div>
     {% endfor %}
 </div>

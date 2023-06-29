@@ -65,11 +65,6 @@ class CreatePost(LoginRequiredMixin, CreateView):
 
         return super().form_valid(form)
 
-    def resize_image(image, size):
-        img = Image.open(image)
-        img.thumbnail(size)
-        img.save(image.path)
-
 
 class DetailPost(LoginRequiredMixin, DetailView):
     """投稿詳細ページ"""
@@ -86,8 +81,7 @@ class UpdatePost(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     """投稿編集ページ"""
     model = Post
     template_name = 'update.html'
-    fields = ['title', 'content']
-
+    form_class = PostForm
 
     def get_success_url(self,  **kwargs):
         """編集完了後の遷移先"""
