@@ -30,10 +30,12 @@
         <a href="{% url 'dislike-detail' object.pk %}">👎</a>{{object.dislike.count}}
         {% endif %}
 
+        {% if object.user != request.user %}
         {% if object.user in connection.0.following.all %}
         <a href="{% url 'follow-detail' object.pk %}">フォロー解除</a>
         {% else %}
         <a href="{% url 'follow-detail' object.pk %}">フォロー</a>
+        {% endif %}
         {% endif %}
 
         {% if object.user == request.user %}

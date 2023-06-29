@@ -88,12 +88,12 @@ body {
 
 
 .list1{
-     top:150px;
+    top:150px;
     font-size:22px;
     margin-top: 95px;
     padding-bottom: 30px;
     padding: 0.5em 1em;
-    margin: 2em 15em;
+    margin: 2em 10em;
     color: #474747;
     background: whitesmoke;/*背景色*/
     border-left: double 7px #4ec4d3;/*左線*/
